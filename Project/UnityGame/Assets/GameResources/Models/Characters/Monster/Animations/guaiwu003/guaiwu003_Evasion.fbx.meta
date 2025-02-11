@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 9b79f49770bdae741abccbbafc7930e4
+guid: 9d5b8bdb26a20214aa5e72357e77e422
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -3577979661970795860
-    second: idle_02
+      74: -5636780432218783729
+    second: Evasion
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -33,36 +33,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: idle_02
-      takeName: idle_02
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 97
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
