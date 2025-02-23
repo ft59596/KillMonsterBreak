@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: 67c003b144ea63b4280e9caba36d7b1e
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 6298645737685257038
+    second: jiaju_007_open
   externalObjects: {}
   materials:
     materialImportMode: 2
