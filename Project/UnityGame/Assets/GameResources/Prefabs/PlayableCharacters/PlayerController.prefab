@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631301768}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 4.419, z: -3.481}
+  m_LocalPosition: {x: 0, y: 5.5, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3104848016375291232}
@@ -73,6 +73,8 @@ GameObject:
   - component: {fileID: 716167655}
   - component: {fileID: 716167653}
   - component: {fileID: 716167654}
+  - component: {fileID: 716167656}
+  - component: {fileID: 716167657}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -127,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 541081852548751531}
+  isAttacking: 0
 --- !u!114 &716167654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,10 +142,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562df333178c7a2449ad8a03f9db9cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityEnable: 1
+  characterBase: {fileID: 0}
   characterController: {fileID: 716167655}
   moveSpeed: 150
-  characterAnimator: {fileID: 716167653}
   transBody: {fileID: 7418432819599528175}
+--- !u!114 &716167656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7085237174033372445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7c13bbfe07f01498b32fd5804dc641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityEnable: 1
+  characterBase: {fileID: 0}
+  moveAbility: {fileID: 0}
+  isCanAttackMove: 0
+  moveTime:
+  - 0
+  - 0
+  - 0
+  attackMoveSpeed: []
+  currentMoveTime: 0
+--- !u!114 &716167657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7085237174033372445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02cb69e78b728d847b1ea53fe5ef2e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAIController: 0
+  characterAbilities: []
+  characterAnimator: {fileID: 716167653}
+  currentRoleDirection: {x: 0, y: 0, z: 0}
 --- !u!1001 &541081851057278128
 PrefabInstance:
   m_ObjectHideFlags: 0
