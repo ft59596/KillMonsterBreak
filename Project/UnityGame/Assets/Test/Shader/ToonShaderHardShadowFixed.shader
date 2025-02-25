@@ -2,6 +2,7 @@ Shader "Custom/ToonShaderHardShadowFixed" {
     Properties {
         _Color ("Base Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        _NormalMap ("Normal Map", 2D) = "bump" {} // 添加法线贴图
         _Ramp ("Toon Ramp (RGB)", 2D) = "white" {} // 用于硬阴影的光照渐变纹理
         _OutlineWidth ("Outline Width", Range(0,1)) = 0.1
         _OutlineColor ("Outline Color", Color) = (0,0,0,1)
@@ -12,6 +13,7 @@ Shader "Custom/ToonShaderHardShadowFixed" {
         _EmissionColor ("Emission Color", Color) = (1,1,1,1) // 发光颜色
         _EmissionIntensity ("Emission Intensity", Range(0,10)) = 1 // 发光强度
         _Roughness ("Roughness", Range(0,1)) = 0.5 // 粗糙度
+        _LightRange ("Light Range", Float) = 10.0 // 灯光范围
     }
     SubShader {
         Tags { "RenderType"="Opaque" }
@@ -62,6 +64,7 @@ Shader "Custom/ToonShaderHardShadowFixed" {
         #pragma surface surf Toon fullforwardshadows
 
         sampler2D _MainTex;
+        sampler2D _NormalMap; // 法线贴图
         sampler2D _Ramp; // 硬阴影的光照渐变纹理
         sampler2D _EmissionMap; // 发光贴图
         float4 _Color;
@@ -71,12 +74,15 @@ Shader "Custom/ToonShaderHardShadowFixed" {
         float4 _EmissionColor; // 发光颜色
         float _EmissionIntensity; // 发光强度
         float _Roughness; // 粗糙度
+        float _LightRange; // 灯光范围
 
         struct Input {
             float2 uv_MainTex;
+            float2 uv_NormalMap; // 法线贴图的 UV 坐标
             float2 uv_EmissionMap; // 发光贴图的 UV 坐标
             float3 viewDir;
             float3 worldNormal;
+            float3 worldPos; // 获取世界坐标
             INTERNAL_DATA
         };
 
@@ -104,6 +110,9 @@ Shader "Custom/ToonShaderHardShadowFixed" {
             fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
 
+            // 法线贴图
+            o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
+
             // 硬边菲涅尔效果
             float fresnel = 1.0 - saturate(dot(normalize(IN.viewDir), WorldNormalVector(IN, o.Normal)));
             fresnel = step(_FresnelThreshold, fresnel); // 使用 step 函数实现硬边
@@ -116,6 +125,11 @@ Shader "Custom/ToonShaderHardShadowFixed" {
             // 粗糙度
             o.Specular = 1.0 - _Roughness; // 高光强度（粗糙度越低，高光越强）
             o.Gloss = _Roughness; // 高光锐利程度（粗糙度越高，高光越模糊）
+
+            // 计算灯光衰减
+            float distanceToLight = distance(IN.worldPos, _WorldSpaceLightPos0.xyz);
+            float attenuation = saturate(1.0 - distanceToLight / _LightRange);
+            o.Albedo *= attenuation;
         }
         ENDCG
 

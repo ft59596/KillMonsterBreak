@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5782651788834315086}
   - component: {fileID: 2145775640697824439}
+  - component: {fileID: 3225016315511610170}
   m_Layer: 0
   m_Name: jiaju_055
   m_TagString: Untagged
@@ -83,3 +84,22 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.6762785, z: 0}
     m_Extent: {x: 0.3706156, y: 0.6762785, z: 0.026625492}
   m_DirtyAABB: 0
+--- !u!95 &3225016315511610170
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560561061258281460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a68cb58f015e3f479dee287021ed82a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
