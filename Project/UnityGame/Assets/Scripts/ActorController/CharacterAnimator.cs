@@ -14,6 +14,7 @@ public class CharacterAnimator : MonoBehaviour
     protected string comboCount = "Combo";
     protected string isMove = "IsMove";
     protected int currentComboCount = 0;
+    public int comboMax = 0;
  
     public AnimatorStateInfo CurrentSatetInfo
     {

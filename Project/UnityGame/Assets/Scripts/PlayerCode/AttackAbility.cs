@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AttackAbility : CharacterAbility
 {
@@ -10,34 +11,41 @@ public class AttackAbility : CharacterAbility
     public List<float> attackMoveSpeed;
     [HideInInspector]
     public float currentMoveTime = 0;
+    private NavMeshAgent navMeshAgent;
+    private CharacterAnimator characterAnimator;
     // Start is called before the first frame update
     void Start()
     {
         moveAbility = transform.GetComponent<MoveAbility>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        characterAnimator = GetComponent<CharacterAnimator>();
     }
-
-    // Update is called once per frame
-   public override void OnUpdate()
+    public override void OnUpdate()
     {
-        OnRoleAttack();
+        base.OnUpdate();
+        OnAttackingStopMove();
         OnAttackMoveRun();
     }
-
-    public void OnRoleAttack()
+    void OnAttackingStopMove()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (characterAnimator.isAttacking)
         {
-            characterBase.characterAnimator.AnimatorDoNormalAttack();
+            if (navMeshAgent != null)
+            {
+                navMeshAgent.isStopped = true;
+            }
         }
-        if (moveAbility != null)
-        {
-            moveAbility.abilityEnable = !characterBase.characterAnimator.isAttacking;
+        else {
+            if (navMeshAgent != null)
+            {
+                navMeshAgent.isStopped = false;
+            }
         }
-
     }
-
-    void OnAttackMoveRun() {
-        if (currentMoveTime > 0 && moveAbility != null) {
+    void OnAttackMoveRun()
+    {
+        if (currentMoveTime > 0 && moveAbility != null)
+        {
             currentMoveTime -= Time.deltaTime;
             //moveAbility.RoleForwardDirection(attackMoveSpeed[]);
         }

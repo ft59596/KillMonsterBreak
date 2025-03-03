@@ -75,9 +75,10 @@ GameObject:
   - component: {fileID: 716167654}
   - component: {fileID: 716167656}
   - component: {fileID: 716167657}
+  - component: {fileID: 8363275055018402762}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 541081852548751531}
   isAttacking: 0
+  comboMax: 3
 --- !u!114 &716167654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +147,7 @@ MonoBehaviour:
   abilityEnable: 1
   characterBase: {fileID: 0}
   characterController: {fileID: 716167655}
-  moveSpeed: 150
+  moveSpeed: 300
   transBody: {fileID: 7418432819599528175}
 --- !u!114 &716167656
 MonoBehaviour:
@@ -185,6 +187,18 @@ MonoBehaviour:
   characterAbilities: []
   characterAnimator: {fileID: 716167653}
   currentRoleDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &8363275055018402762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7085237174033372445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558f34f834912404897382b9ba57c25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &541081851057278128
 PrefabInstance:
   m_ObjectHideFlags: 0

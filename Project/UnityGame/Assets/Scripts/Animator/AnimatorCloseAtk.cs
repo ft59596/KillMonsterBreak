@@ -9,6 +9,9 @@ public class AnimatorCloseAtk : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (nextComboIndex > animator.GetComponentInParent<CharacterAnimator>().comboMax) {
+            nextComboIndex = animator.GetComponentInParent<CharacterAnimator>().comboMax;
+        }
         animator.SetInteger("Combo", nextComboIndex);
         animator.GetComponentInParent<CharacterAnimator>().isAttacking = true;
         do
