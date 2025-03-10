@@ -13,12 +13,15 @@ public class CharacterAnimator : MonoBehaviour
     protected string isCombatState = "IsCombatState";
     protected string comboCount = "Combo";
     protected string isMove = "IsMove";
+    protected string isDash = "IsDash";
+    protected string isJump = "IsJump";
     protected int currentComboCount = 0;
     public int comboMax = 0;
- 
+
     public AnimatorStateInfo CurrentSatetInfo
     {
-        get {
+        get
+        {
             return animator.GetCurrentAnimatorStateInfo(0);
         }
     }
@@ -45,9 +48,10 @@ public class CharacterAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("CombatIdle") && currentComboCount == 3) {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("CombatIdle") && currentComboCount == 3)
+        {
             currentComboCount = 0;
-            animator.SetBool(attackAnimatorName,false);
+            animator.SetBool(attackAnimatorName, false);
         }
     }
     public void AnimatorDoMove()
@@ -77,5 +81,10 @@ public class CharacterAnimator : MonoBehaviour
     public void AnimatorDoNormalAttack()
     {
         animator.SetTrigger(attackAnimatorName);
+    }
+    public void OnAnimatorJump()
+    {
+        animator.SetTrigger(isJump);
+        animator.SetBool(attackAnimatorName,false);
     }
 }
