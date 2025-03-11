@@ -23,6 +23,7 @@ public class AttackAbility : CharacterAbility
     public override void OnUpdate()
     {
         base.OnUpdate();
+        OnRoleAttack();
         OnAttackingStopMove();
         OnAttackMoveRun();
     }
@@ -35,7 +36,8 @@ public class AttackAbility : CharacterAbility
                 navMeshAgent.isStopped = true;
             }
         }
-        else {
+        else
+        {
             if (navMeshAgent != null)
             {
                 navMeshAgent.isStopped = false;
@@ -49,5 +51,18 @@ public class AttackAbility : CharacterAbility
             currentMoveTime -= Time.deltaTime;
             //moveAbility.RoleForwardDirection(attackMoveSpeed[]);
         }
+    }
+
+    public void OnRoleAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            characterBase.characterAnimator.AnimatorDoNormalAttack();
+        }
+        if (moveAbility != null)
+        {
+            moveAbility.abilityEnable = !characterBase.characterAnimator.isAttacking;
+        }
+
     }
 }
