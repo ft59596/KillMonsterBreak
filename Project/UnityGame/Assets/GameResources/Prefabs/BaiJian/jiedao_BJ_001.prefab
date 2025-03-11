@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4265999305987423537}
   - component: {fileID: 6138835167161150126}
   m_Layer: 0
-  m_Name: jiedao_BJ_001
+  m_Name: Jiedao_BJ_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -23,7 +23,6 @@ public class AttackAbility : CharacterAbility
     public override void OnUpdate()
     {
         base.OnUpdate();
-        OnRoleAttack();
         OnAttackingStopMove();
         OnAttackMoveRun();
     }
@@ -50,18 +49,5 @@ public class AttackAbility : CharacterAbility
             currentMoveTime -= Time.deltaTime;
             //moveAbility.RoleForwardDirection(attackMoveSpeed[]);
         }
-    }
-
-    public void OnRoleAttack()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            characterBase.characterAnimator.AnimatorDoNormalAttack();
-        }
-        if (moveAbility != null)
-        {
-            moveAbility.abilityEnable = !characterBase.characterAnimator.isAttacking;
-        }
-
     }
 }
